@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: cloud-dashboard-config
+
+data:
+  default.conf: |
+    server {
+      listen 80;
+      server_name _;
+
+      location / {
+        root /usr/share/nginx/html;
+        index index.html;
+        add_header X-Environment "production" always;
+      }
+    }

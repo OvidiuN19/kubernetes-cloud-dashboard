@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: cloud-dashboard
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: cloud-dashboard
+
+  template:
+    metadata:
+      labels:
+        app: cloud-dashboard
+
+    spec:
+      containers:
+        - name: cloud-dashboard
+          image: cloud-dashboard:v2
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 80
+
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: cloud-dashboard-config
