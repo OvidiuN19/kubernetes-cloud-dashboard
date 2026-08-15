@@ -115,6 +115,8 @@ kubectl get pods
 
 The final Deployment uses `cloud-dashboard:v2`.
 
+During the initial Deployment, the Pod entered `ErrImageNeverPull` because `cloud-dashboard:v1` was available in Docker Desktop but not in the Kubernetes node's `containerd` runtime. The issue was diagnosed using `kubectl describe pod` and `crictl images`. The image was then imported into the node's containerd runtime, after which the Pod started successfully.
+
 ### Service
 
 A NodePort Service provides stable access to the application Pods.
