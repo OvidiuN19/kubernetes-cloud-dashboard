@@ -79,6 +79,26 @@ Each stage adds a specific operational capability to the application rather than
 
 ---
 
+## Version Control
+
+The project is versioned with Git and hosted on GitHub.
+
+The repository was initialized locally and connected to a remote:
+
+```bash
+git remote add origin https://github.com/OvidiuN19/kubernetes-cloud-dashboard.git
+```
+
+Temporary Docker image archives are excluded via `.gitignore`:
+
+```text
+*.tar
+```
+
+Changes were committed incrementally throughout the project and pushed to `master`.
+
+---
+
 ## Kubernetes Components
 
 ### Deployment
